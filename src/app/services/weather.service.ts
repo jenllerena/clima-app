@@ -14,6 +14,6 @@ export class WeatherService {
    }
 
    getWeather(cityName){
-     return this.httpClient.get(`${this.url}${cityName}`);
+     return this.httpClient.get(`${this.url}${cityName}&units=metric`);
    }
 }
