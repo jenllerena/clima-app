@@ -1,10 +1,10 @@
 
 <!--Aqui empieza app-->
-<div style="height: 100vh;">
+<div class="cont">
   <div class="cs-landing-header">
     <div class="container">
+      <div class="title">Weather</div>
       <form (submit)='searchByCity(city)' class="form-container">
-      
         <div class="city-box">
           <i class="icon-spinner-dark search-embedded-current-location-button_loader"></i>
           <input type="text" 
@@ -14,22 +14,37 @@
         <button class="btn-search">Search</button>
       </form>
     </div>
-    <div *ngIf="weatherData" style="justify-content: center;width: 100%;
-    align-items: center;text-align: center;">
-      <div style="display: inline-block;background-color: lightcoral;font-size:52px;width: 200px;height: 150px;vertical-align: middle;">
-        {{weatherData.main.temp}}
+    <div *ngIf="weatherData" class="temp-container">
+      <div  style="padding-top: 30px">
+        <div class="location-img"></div>
+        <div class="dg-ext">{{cityName}}, {{country}}</div>
       </div>
+      <div class="temp-box">
+        <span>{{ temperature }}°</span>
+      </div>
+
       <div>
-        <div>icono</div>
-        <div>{{weatherData.name}},{{weatherData.sys.country}}</div>
+        <span class="dg-ext">Feels like {{feelslLike}}°</span>
       </div>
-      <div>Temperature : {{weatherData.main.temp}}</div>
+
+      <div style="margin-bottom: 5px" class="dg-ext">
+        <span style="margin-right: 30px">Temp min: {{tempMin}}°</span>
+        <span style="margin-left: 30px">Temp max: {{tempMax}}°</span>
+      </div>
+      <hr style="background-color: white;margin:auto;width: 65%">
+      <img id="img-icon" [src]="createIcon()" >
+      <h4 style="margin-top: 0"> {{description}}</h4>
+      <div class="rect-box ">
+        <div class="rect-left ">
+          <span class="dg-ext">Pressure</span>
+          <span>{{pressure}}</span>
+        </div>
+        <div class="rect-right">
+          <span class="dg-ext">Humidity</span>
+          <span>{{humidity}}</span>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="content" role="main" style="display: block;">
-    <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="550" viewBox="0 0 2611.084 485.677">
-      
-    </svg>
   </div>
 </div>
 
